@@ -25,7 +25,9 @@ jobs:
           python -m pip install -r requirements.txt
 
       - name: Build the Voici dashboard
-        run: voici build --contents content --output-dir dist
+        run: |
+          voici build --contents content --output-dir dist
+          cp -r ./dist/extensions ./dist/voici/render/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
