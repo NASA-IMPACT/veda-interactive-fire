@@ -18,14 +18,16 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install the dependencies
         run: |
           python -m pip install -r requirements.txt
 
       - name: Build the Voici dashboard
-        run: voici build --contents content --output-dir dist
+        run: |
+          voici build --contents content --output-dir dist
+          cp -r ./dist/extensions ./dist/voici/render/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
