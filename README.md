@@ -9,3 +9,23 @@ Showing large fires that were burning when the fire atlas was last updated. Only
 You can learn more about how to access [this data](https://firenrt.delta-backend.com/collections/public.eis_fire_snapshot_perimeter_nrt) directly in [this VEDA documentation page](https://nasa-impact.github.io/veda-docs/notebooks/tutorials/mapping-fires.html).
 
 ⚠️ This visualization is created using a [jupyterlite-pyodide-kernel](https://github.com/jupyterlite/pyodide-kernel) and [voici](https://voici.readthedocs.io/en/latest/). It is rendered client-side (in your browser!) via the magic of [Wasm](https://webassembly.org/). This is an exciting and rapidly evolving space which means that this visualization is highly experimental and likely to break. ⚠️
+
+## Run this locally
+
+First set up your enviornment; in a Python 3.11 environment (I use mamba for env management) run:
+
+```
+python -m pip install -r requirements.txt
+```
+
+Build the voici content:
+
+```
+voici build --contents content --output-dir dist
+```
+
+Serve the content locally:
+
+```
+cd dist && python -m http.server 8000
+```
